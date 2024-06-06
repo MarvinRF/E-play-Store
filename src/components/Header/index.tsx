@@ -3,31 +3,34 @@ import React from 'react'
 import { HeaderBar, LinkCart, LinkItem, Links } from '../Header/styles'
 import logo from '../../assets/logo.svg'
 import carrinho from '../../assets/carrinho.svg'
+import { Link } from 'react-router-dom'
 
 const navOptions = [
   {
     name: 'Categorias',
-    href: '#'
+    href: '/categories'
   },
   {
     name: 'Novidades',
-    href: '#'
+    href: '/novidades'
   },
   {
     name: 'Promoções',
-    href: '#'
+    href: '/promocoes'
   }
 ]
 
 const Header = () => (
   <HeaderBar>
     <div>
-      <img src={logo} alt="Eplay" />
+      <Link to="/">
+        <img src={logo} alt="Eplay" />
+      </Link>
       <nav>
         <Links>
           {navOptions.map((option) => (
             <LinkItem key={option.name}>
-              <a href={option.href}>{option.name}</a>
+              <Link to={option.href}>{option.name}</Link>
             </LinkItem>
           ))}
         </Links>
