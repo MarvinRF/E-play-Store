@@ -6,7 +6,7 @@ export const Container = styled.footer`
   padding: 32px 0;
 `
 
-export const sectionTitle = styled.h4`
+export const SectionTitle = styled.h4`
   color: ${cores.branca};
   font-size: 16px;
   font-weight: bold;
