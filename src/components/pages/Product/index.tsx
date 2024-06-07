@@ -2,6 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import Banner from '../../Banner'
 import Section from '../../Section'
+import Gallery from '../../Gallery'
 
 const Product = () => {
   const { id } = useParams()
@@ -27,9 +28,7 @@ const Product = () => {
           jogo.
         </p>
       </Section>
-      <Section title={'Galeria'} background={'black'}>
-        <div>fotos</div>
-      </Section>
+      <Gallery />
     </>
   )
 }
