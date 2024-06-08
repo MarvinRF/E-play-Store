@@ -82,6 +82,7 @@ export const ModalContent = styled.div`
   img,
   iframe {
     display: block;
+    max-width: 100%;
     cursor: pointer;
   }
 
