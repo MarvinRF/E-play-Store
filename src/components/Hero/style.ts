@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
-export const ContainerBanner = styled.div`
+export const ContainerHero = styled.div`
   position: relative;
   display: block;
   height: 480px;

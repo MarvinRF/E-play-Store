@@ -1,33 +1,26 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Section from '../Section'
-import hog1 from '../../assets/images/hog-1.png'
+
 import lupa from '../../assets/mais-zoom.png'
 import play from '../../assets/botao-play.png'
 import close from '../../assets/close.png'
 import { Items, Item, Action, Modal, ModalContent } from './styles'
 
 interface GalleryItem {
-  type: 'image' | 'video'
+  type: 'video' | 'image'
   url: string
 }
-
-const mock: GalleryItem[] = [
-  { type: 'image', url: hog1 },
-  { type: 'image', url: hog1 },
-  { type: 'video', url: 'https://www.youtube.com/embed/h5IrJk-PX8M' },
-  { type: 'video', url: 'https://www.youtube.com/embed/h5IrJk-PX8M' }
-]
-
-type Props = {
-  defaultCover: string
-  name: string
-}
-
 interface ModalState extends GalleryItem {
   isVisible: boolean
 }
 
-const Gallery = ({ defaultCover, name }: Props) => {
+type Props = {
+  defaultCover: string
+  name: string
+  items: GalleryItem[]
+}
+
+const Gallery = ({ defaultCover, name, items }: Props) => {
   const [modal, setModal] = useState<ModalState>({
     isVisible: false,
     type: 'image',
@@ -42,9 +35,7 @@ const Gallery = ({ defaultCover, name }: Props) => {
   }
 
   const getMediaIcon = (item: GalleryItem) => {
-    if (item.type === 'image') {
-      return lupa
-    }
+    if (item.type === 'image') return lupa
     return play
   }
 
@@ -56,7 +47,7 @@ const Gallery = ({ defaultCover, name }: Props) => {
     <>
       <Section title={'Galeria'} background={'black'}>
         <Items>
-          {mock.map((media, index) => (
+          {items.map((media, index) => (
             <Item
               key={media.url}
               onClick={() => {

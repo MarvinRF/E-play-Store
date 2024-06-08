@@ -1,29 +1,44 @@
-import React from 'react'
-import { Imagem, Titulo, Precos } from './styles'
-import BannerImg from '../../assets/images/banner-homem-aranha.png'
+import hogwarts from '../../assets/images/hogwarts.png'
+import { ContainerHero, Infos } from './style'
 import Tag from '../Tag'
 import Button from '../Button'
+import { Game } from '../pages/Home'
+import { formataPreco } from '../ProductsList'
 
-const Hero = () => {
+type Props = {
+  game: Game
+}
+
+const Hero = ({ game }: Props) => {
   return (
-    <Imagem style={{ backgroundImage: `url(${BannerImg}) ` }}>
+    <ContainerHero style={{ backgroundImage: `url(${game.media.cover})` }}>
       <div className="container">
-        <Tag size="big">Destaque do dia</Tag>
         <div>
-          <Titulo>Marvel&apos;s Spider-Man: Miles Morales PS4 & PS5</Titulo>
-          <Precos>
-            De <span>R$ 250,00</span> <br /> Por apenas R$ 99,90
-          </Precos>
+          <Tag>{game.details.category}</Tag>
+          <Tag>{game.details.system}</Tag>
         </div>
-        <Button
-          type="link"
-          title="clique aqui para aproveitar esta oferta"
-          to="/produto"
-        >
-          Aproveitar
-        </Button>
+        <Infos>
+          <h2>{game.name}</h2>
+          <p>
+            {game.prices.discount && (
+              <span>De {formataPreco(game.prices.old)}</span>
+            )}
+            {game.prices.current && (
+              <>Por {formataPreco(game.prices.current)}</>
+            )}
+          </p>
+          {game.prices.current && (
+            <Button
+              type="button"
+              title="Clique aqui para adicionar este jogo ao carrinho"
+              variant="primary"
+            >
+              Adicionar ao carrinho
+            </Button>
+          )}
+        </Infos>
       </div>
-    </Imagem>
+    </ContainerHero>
   )
 }
 
