@@ -5,6 +5,7 @@ import { HashLink } from 'react-router-hash-link'
 export const Container = styled.footer`
   background-color: ${cores.cinza};
   padding: 32px 0;
+  margin-top: 40px;
 `
 
 export const SectionTitle = styled.h4`
