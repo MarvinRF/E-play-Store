@@ -1,3 +1,4 @@
+import { BreakPoints } from './../../styles'
 import styled from 'styled-components'
 
 import { Props } from '.'
@@ -20,6 +21,13 @@ export const List = styled.ul`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 24px;
   margin-top: 40px;
+
+  @media (max-width: ${BreakPoints.desktop}) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: ${BreakPoints.tablet}) {
+    grid-template-columns: 1fr;
+  }
 `
 export const Title = styled.h2`
   font-size: 18px;
