@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import { HeaderBar, CartButton, LinkItem, Links } from '../Header/styles'
+import {
+  HeaderBar,
+  CartButton,
+  LinkItem,
+  Links,
+  Hamburguer,
+  HeaderRow,
+  NavMobile
+} from '../Header/styles'
 import logo from '../../assets/logo.svg'
 import carrinho from '../../assets/carrinho.svg'
 import { Link } from 'react-router-dom'
@@ -27,6 +35,7 @@ const navOptions = [
 const Header = () => {
   const dispatch = useDispatch()
   const { items } = useSelector((state: RootState) => state.cart)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const openCart = () => {
     dispatch(open())
@@ -34,24 +43,41 @@ const Header = () => {
 
   return (
     <HeaderBar>
-      <div>
-        <Link to="/">
-          <img src={logo} alt="Eplay" />
-        </Link>
-        <nav>
-          <Links>
-            {navOptions.map((option) => (
-              <LinkItem key={option.name}>
-                <Link to={option.href}>{option.name}</Link>
-              </LinkItem>
-            ))}
-          </Links>
-        </nav>
-      </div>
-      <CartButton onClick={openCart}>
-        {items.length} - produto(s)
-        <img src={carrinho} alt="Carrinho" />
-      </CartButton>
+      <HeaderRow>
+        <div>
+          <Hamburguer onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <span />
+            <span />
+            <span />
+          </Hamburguer>
+          <Link to="/">
+            <img src={logo} alt="Eplay" />
+          </Link>
+          <nav>
+            <Links>
+              {navOptions.map((option) => (
+                <LinkItem key={option.name}>
+                  <Link to={option.href}>{option.name}</Link>
+                </LinkItem>
+              ))}
+            </Links>
+          </nav>
+        </div>
+        <CartButton onClick={openCart}>
+          {items.length}
+          <span> - produto(s)</span>
+          <img src={carrinho} alt="Carrinho" />
+        </CartButton>
+      </HeaderRow>
+      <NavMobile className={isMenuOpen ? 'is-open' : ''}>
+        <Links>
+          {navOptions.map((option) => (
+            <LinkItem key={option.name}>
+              <Link to={option.href}>{option.name}</Link>
+            </LinkItem>
+          ))}
+        </Links>
+      </NavMobile>
     </HeaderBar>
   )
 }
