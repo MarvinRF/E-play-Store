@@ -168,7 +168,7 @@ const Checkout = () => {
   return (
     <div className="container">
       {isSuccess && data ? (
-        <Card title="Muito obrigada!">
+        <Card title="Muito obrigado!">
           <>
             <p>
               É com satisfação que informamos que recebemos seu pedido com
@@ -197,7 +197,7 @@ const Checkout = () => {
               através dos nossos canais de atendimento ao cliente.
             </p>
             <p className="margin-top">
-              Agradecemos por escolher a EPLAY e esperamos que desfrute do seu
+              Agradecemos por escolher a E-PLAY e esperamos que desfrute do seu
               jogo!
             </p>
           </>
