@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom'
 
 import { open } from '../../store/reducers/cart'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../store'
+import { RootReducer } from '../../store'
 
 const navOptions = [
   {
@@ -34,7 +34,7 @@ const navOptions = [
 
 const Header = () => {
   const dispatch = useDispatch()
-  const { items } = useSelector((state: RootState) => state.cart)
+  const { items } = useSelector((state: RootReducer) => state.cart)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const openCart = () => {

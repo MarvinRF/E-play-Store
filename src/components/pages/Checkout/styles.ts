@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../../styles'
+import { cores, BreakPoints } from '../../../styles'
 
 type InputGroupProps = {
   maxWidth?: string
@@ -18,10 +18,16 @@ export const Row = styled.div<RowProps>`
   column-gap: 24px;
   margin-top: ${(props) => props.marginTop || '0'};
   align-items: flex-end;
+
+  @media (max-width: ${BreakPoints.tablet}) {
+    display: block;
+  }
 `
+
 export const InputGroup = styled.div<InputGroupProps>`
   flex: auto;
   max-width: ${(props) => props.maxWidth || 'auto'};
+
   label {
     font-size: 14px;
     margin-bottom: 8px;
@@ -35,6 +41,15 @@ export const InputGroup = styled.div<InputGroupProps>`
     height: 32px;
     padding: 0 8px;
     width: 100%;
+
+    &.error {
+      border: 1px solid red;
+    }
+  }
+
+  @media (max-width: ${BreakPoints.tablet}) {
+    display: block;
+    margin-top: 16px;
   }
 `
 
@@ -47,11 +62,15 @@ export const TabButton = styled.button<TabButtonProps>`
   height: 32px;
   border: none;
   margin-right: 16px;
-  margin-bottom: 24px;
-  cursor: pointer;
   padding: 0 8px;
+  cursor: pointer;
 
   img {
     margin-right: 8px;
+  }
+
+  @media (max-width: ${BreakPoints.tablet}) {
+    margin-top: 8px;
+    width: 100%;
   }
 `

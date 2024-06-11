@@ -2,7 +2,8 @@ import React from 'react'
 import Button from '../Button'
 import diab from '../../assets/images/diablo.png'
 import close from '../../assets/close.png'
-import { RootState } from '../../store/index'
+import { RootReducer } from '../../store/index'
+import { useNavigate } from 'react-router-dom'
 
 import {
   CartContainer,
@@ -18,8 +19,8 @@ import { close as closeCa, remove } from '../../store/reducers/cart'
 import { formataPreco } from '../ProductsList'
 
 const Cart = () => {
-  const { isOpen, items } = useSelector((state: RootState) => state.cart)
-
+  const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const closeCart = () => {
@@ -34,6 +35,11 @@ const Cart = () => {
 
   const removeItem = (id: number) => {
     dispatch(remove(id))
+  }
+
+  const goToCheckout = () => {
+    navigate('/checkout')
+    closeCart()
   }
 
   return (
@@ -64,7 +70,11 @@ const Cart = () => {
           total de {formataPreco(getTotalPrice())}{' '}
           <span>em até 6x sem juros</span>
         </Prices>
-        <Button title="clique aqui para continuar com a compra" type="button">
+        <Button
+          title="clique aqui para continuar com a compra"
+          type="button"
+          onClick={goToCheckout}
+        >
           Continuar com a compra
         </Button>
       </SideBar>

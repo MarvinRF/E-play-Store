@@ -2,12 +2,13 @@ import React from 'react'
 import { ButtonContainer, ButtonLink } from './styles'
 
 export type Props = {
-  type: 'button' | 'link'
+  type: 'button' | 'link' | 'submit'
   title: string
   to?: string
   onClick?: () => void
   children: string
   variant?: 'primary' | 'secondary'
+  disabled?: boolean
 }
 
 const Button = ({
@@ -18,12 +19,12 @@ const Button = ({
   children,
   variant = 'primary'
 }: Props) => {
-  if (type === 'button') {
+  if (type === 'button' || type === 'submit') {
     return (
       <ButtonContainer
         variant={variant}
         title={title}
-        type="button"
+        type={type}
         onClick={onClick}
       >
         {children}
