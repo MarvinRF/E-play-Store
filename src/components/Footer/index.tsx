@@ -1,41 +1,68 @@
-import React from 'react'
-import {
-  Container,
-  Copy,
-  FooterSection,
-  Link,
-  Links,
-  SectionTitle
-} from './styles'
+import * as S from './styles'
 
 const currentYear = new Date().getFullYear()
 
 const Footer = () => {
   return (
-    <Container>
+    <S.Container>
       <div className="container">
-        <FooterSection>
-          <SectionTitle>Categorias</SectionTitle>
-          <Links>
-            <Link to="/categories#action">Ação</Link>
-            <Link to="/categories#sports">Esportes</Link>
-            <Link to="/categories#simulation">Simulação</Link>
-            <Link to="/categories#fight">Luta</Link>
-            <Link to="/categories#rpg">RPG</Link>
-          </Links>
-        </FooterSection>
-        <FooterSection>
-          <SectionTitle>Acesso Rápido</SectionTitle>
-          <Links>
-            <Link to="/#on-sale">Promoções</Link>
-            <Link to="/#coming-soon">Em breve</Link>
-          </Links>
-        </FooterSection>
-        <Copy>
+        <S.FooterSection>
+          <S.SectionTitle>Categorias</S.SectionTitle>
+          <S.Links>
+            <S.Link
+              title="clique aqui para acessar jogos de ação"
+              to="/categories#action"
+            >
+              Ação
+            </S.Link>
+            <S.Link
+              title="clique aqui para acessar jogos de esportes"
+              to="/categories#sports"
+            >
+              Esportes
+            </S.Link>
+            <S.Link
+              title="clique aqui para acessar jogos de simulação"
+              to="/categories#simulation"
+            >
+              Simulação
+            </S.Link>
+            <S.Link
+              title="clique aqui para acessar jogos de luta"
+              to="/categories#fight"
+            >
+              Luta
+            </S.Link>
+            <S.Link
+              title="clique aqui para acessar jogos de rpg"
+              to="/categories#rpg"
+            >
+              RPG
+            </S.Link>
+          </S.Links>
+        </S.FooterSection>
+        <S.FooterSection>
+          <S.SectionTitle>Acesso Rápido</S.SectionTitle>
+          <S.Links>
+            <S.Link
+              title="clique aqui para acessar a seção promoções"
+              to="/#on-sale"
+            >
+              Promoções
+            </S.Link>
+            <S.Link
+              title="clique aqui para acessar a seção em-breve"
+              to="/#coming-soon"
+            >
+              Em breve
+            </S.Link>
+          </S.Links>
+        </S.FooterSection>
+        <S.Copy>
           {currentYear} - &copy; Steam Verde Todos os Direitos Reservados
-        </Copy>
+        </S.Copy>
       </div>
-    </Container>
+    </S.Container>
   )
 }
 

@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
-import { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import InputMask from 'react-input-mask'
@@ -14,9 +14,9 @@ import creditCard from '../../../assets/credit.png'
 import { usePurchaseMutation } from '../../../services/api'
 import { RootReducer } from '../../../store'
 import { clear } from '../../../store/reducers/cart'
-import { getTotalPrice, parseToBrl } from '../../utils'
+import { getTotalPrice, parseToBrl } from '../../../utils'
 
-import { InputGroup, Row, TabButton } from './styles'
+import * as S from './styles'
 
 type Installment = {
   quantity: number
@@ -206,8 +206,8 @@ const Checkout = () => {
         <form onSubmit={form.handleSubmit}>
           <Card title="Dados de cobrança">
             <>
-              <Row>
-                <InputGroup>
+              <S.Row>
+                <S.InputGroup>
                   <label htmlFor="fullName">Nome completo</label>
                   <input
                     id="fullName"
@@ -218,8 +218,8 @@ const Checkout = () => {
                     onBlur={form.handleBlur}
                     className={checkInputHasError('fullName') ? 'error' : ''}
                   />
-                </InputGroup>
-                <InputGroup>
+                </S.InputGroup>
+                <S.InputGroup>
                   <label htmlFor="email">E-mail</label>
                   <input
                     id="email"
@@ -230,8 +230,8 @@ const Checkout = () => {
                     onBlur={form.handleBlur}
                     className={checkInputHasError('email') ? 'error' : ''}
                   />
-                </InputGroup>
-                <InputGroup>
+                </S.InputGroup>
+                <S.InputGroup>
                   <label htmlFor="cpf">CPF</label>
                   <InputMask
                     id="cpf"
@@ -243,13 +243,13 @@ const Checkout = () => {
                     className={checkInputHasError('cpf') ? 'error' : ''}
                     mask="999.999.999-99"
                   />
-                </InputGroup>
-              </Row>
+                </S.InputGroup>
+              </S.Row>
               <h3 className="margin-top">
                 Dados de entrega - conteúdo digital
               </h3>
-              <Row>
-                <InputGroup>
+              <S.Row>
+                <S.InputGroup>
                   <label htmlFor="deliveryEmail">E-mail</label>
                   <input
                     id="deliveryEmail"
@@ -262,8 +262,8 @@ const Checkout = () => {
                       checkInputHasError('deliveryEmail') ? 'error' : ''
                     }
                   />
-                </InputGroup>
-                <InputGroup>
+                </S.InputGroup>
+                <S.InputGroup>
                   <label htmlFor="confirmDeliveryEmail">
                     Confirme o e-mail
                   </label>
@@ -278,33 +278,33 @@ const Checkout = () => {
                       checkInputHasError('confirmDeliveryEmail') ? 'error' : ''
                     }
                   />
-                </InputGroup>
-              </Row>
+                </S.InputGroup>
+              </S.Row>
             </>
           </Card>
           <Card title="Pagamento">
             <>
-              <TabButton
+              <S.TabButton
                 isActive={!payWithCard}
                 onClick={() => setPayWithCard(false)}
                 type="button"
               >
                 <img src={barCode} alt="Boleto" />
                 Boleto bancário
-              </TabButton>
-              <TabButton
+              </S.TabButton>
+              <S.TabButton
                 isActive={payWithCard}
                 onClick={() => setPayWithCard(true)}
                 type="button"
               >
                 <img src={creditCard} alt="Cartão de crédito" />
                 Cartão de crédito
-              </TabButton>
+              </S.TabButton>
               <div className="margin-top">
                 {payWithCard ? (
                   <>
-                    <Row>
-                      <InputGroup>
+                    <S.Row>
+                      <S.InputGroup>
                         <label htmlFor="cardOwner">
                           Nome do titular do cartão
                         </label>
@@ -319,8 +319,8 @@ const Checkout = () => {
                             checkInputHasError('cardOwner') ? 'error' : ''
                           }
                         />
-                      </InputGroup>
-                      <InputGroup>
+                      </S.InputGroup>
+                      <S.InputGroup>
                         <label htmlFor="cpfCardOwner">
                           CPF do titular do cartão
                         </label>
@@ -336,10 +336,10 @@ const Checkout = () => {
                           }
                           mask="999.999.999-99"
                         />
-                      </InputGroup>
-                    </Row>
-                    <Row marginTop="24px">
-                      <InputGroup>
+                      </S.InputGroup>
+                    </S.Row>
+                    <S.Row marginTop="24px">
+                      <S.InputGroup>
                         <label htmlFor="cardDisplayName">Nome no cartão</label>
                         <input
                           id="cardDisplayName"
@@ -352,8 +352,8 @@ const Checkout = () => {
                             checkInputHasError('cardDisplayName') ? 'error' : ''
                           }
                         />
-                      </InputGroup>
-                      <InputGroup>
+                      </S.InputGroup>
+                      <S.InputGroup>
                         <label htmlFor="cardNumber">Número do cartão</label>
                         <InputMask
                           id="cardNumber"
@@ -367,8 +367,8 @@ const Checkout = () => {
                           }
                           mask="9999 9999 9999 9999"
                         />
-                      </InputGroup>
-                      <InputGroup maxWidth="123px">
+                      </S.InputGroup>
+                      <S.InputGroup maxWidth="123px">
                         <label htmlFor="expiresMonth">Mês de expiração</label>
                         <InputMask
                           id="expiresMonth"
@@ -382,8 +382,8 @@ const Checkout = () => {
                           }
                           mask="99"
                         />
-                      </InputGroup>
-                      <InputGroup maxWidth="123px">
+                      </S.InputGroup>
+                      <S.InputGroup maxWidth="123px">
                         <label htmlFor="expiresYear">Ano de expiração</label>
                         <InputMask
                           id="expiresYear"
@@ -397,8 +397,8 @@ const Checkout = () => {
                           }
                           mask="99"
                         />
-                      </InputGroup>
-                      <InputGroup maxWidth="48px">
+                      </S.InputGroup>
+                      <S.InputGroup maxWidth="48px">
                         <label htmlFor="cardCode">CVV</label>
                         <InputMask
                           id="cardCode"
@@ -412,10 +412,10 @@ const Checkout = () => {
                           }
                           mask="999"
                         />
-                      </InputGroup>
-                    </Row>
-                    <Row marginTop="24px">
-                      <InputGroup maxWidth="150px">
+                      </S.InputGroup>
+                    </S.Row>
+                    <S.Row marginTop="24px">
+                      <S.InputGroup maxWidth="150px">
                         <label htmlFor="installments">Parcelamento</label>
                         <select
                           id="installments"
@@ -437,8 +437,8 @@ const Checkout = () => {
                             </option>
                           ))}
                         </select>
-                      </InputGroup>
-                    </Row>
+                      </S.InputGroup>
+                    </S.Row>
                   </>
                 ) : (
                   <p>

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { BreakPoints, cores } from '../../styles'
+import { BreakPoints, colors } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
 export const ContainerHero = styled.div`
@@ -15,7 +15,7 @@ export const ContainerHero = styled.div`
   padding-top: 16px;
   &::after {
     position: absolute;
-    background-color: #000;
+    background-color: ${colors.black};
     height: 100%;
     width: 100%;
     top: 0;
@@ -42,7 +42,7 @@ export const ContainerHero = styled.div`
 `
 export const Infos = styled.div`
   padding: 16px;
-  background-color: ${cores.preto};
+  background-color: ${colors.black};
   max-width: 290px;
   font-weight: bold;
 

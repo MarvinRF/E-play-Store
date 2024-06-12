@@ -1,17 +1,10 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
-import {
-  HeaderBar,
-  CartButton,
-  LinkItem,
-  Links,
-  Hamburguer,
-  HeaderRow,
-  NavMobile
-} from '../Header/styles'
+import * as S from '../Header/styles'
 import logo from '../../assets/logo.svg'
-import carrinho from '../../assets/carrinho.svg'
+import cart from '../../assets/carrinho.svg'
 import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 
 import { open } from '../../store/reducers/cart'
 import { useDispatch, useSelector } from 'react-redux'
@@ -20,15 +13,18 @@ import { RootReducer } from '../../store'
 const navOptions = [
   {
     name: 'Categorias',
-    href: '/categories'
+    href: '/categories',
+    title: 'clique aqui para acessar a seção de categorias'
   },
   {
     name: 'Novidades',
-    href: '/novidades'
+    href: '/#coming-soon',
+    title: 'clique aqui para acessar a seção de novidades'
   },
   {
     name: 'Promoções',
-    href: '/promocoes'
+    href: '/#on-sale',
+    title: 'clique aqui para acessar a seção de promoções'
   }
 ]
 
@@ -42,43 +38,47 @@ const Header = () => {
   }
 
   return (
-    <HeaderBar>
-      <HeaderRow>
+    <S.HeaderBar>
+      <S.HeaderRow>
         <div>
-          <Hamburguer onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <S.Hamburguer onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <span />
             <span />
             <span />
-          </Hamburguer>
+          </S.Hamburguer>
           <Link to="/">
             <img src={logo} alt="Eplay" />
           </Link>
           <nav>
-            <Links>
+            <S.Links>
               {navOptions.map((option) => (
-                <LinkItem key={option.name}>
-                  <Link to={option.href}>{option.name}</Link>
-                </LinkItem>
+                <S.LinkItem key={option.name}>
+                  <HashLink title={option.title} to={option.href}>
+                    {option.name}
+                  </HashLink>
+                </S.LinkItem>
               ))}
-            </Links>
+            </S.Links>
           </nav>
         </div>
-        <CartButton onClick={openCart}>
+        <S.CartButton onClick={openCart}>
           {items.length}
           <span> - produto(s)</span>
-          <img src={carrinho} alt="Carrinho" />
-        </CartButton>
-      </HeaderRow>
-      <NavMobile className={isMenuOpen ? 'is-open' : ''}>
-        <Links>
+          <img src={cart} alt="cart" />
+        </S.CartButton>
+      </S.HeaderRow>
+      <S.NavMobile className={isMenuOpen ? 'is-open' : ''}>
+        <S.Links>
           {navOptions.map((option) => (
-            <LinkItem key={option.name}>
-              <Link to={option.href}>{option.name}</Link>
-            </LinkItem>
+            <S.LinkItem key={option.name}>
+              <HashLink to={option.href} onClick={() => setIsMenuOpen(false)}>
+                {option.name}
+              </HashLink>
+            </S.LinkItem>
           ))}
-        </Links>
-      </NavMobile>
-    </HeaderBar>
+        </S.Links>
+      </S.NavMobile>
+    </S.HeaderBar>
   )
 }
 

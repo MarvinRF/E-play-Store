@@ -1,4 +1,3 @@
-import React, { Children } from 'react'
 import { TagContainer } from './styles'
 
 export type Props = {
