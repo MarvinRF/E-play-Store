@@ -146,10 +146,8 @@ const Checkout = () => {
           formattedAmount: parseToBrl(totalPrice / i)
         })
       }
-
       return installmentsArray
     }
-
     if (totalPrice > 0) {
       setInstallments(calculateInstallments())
     }
