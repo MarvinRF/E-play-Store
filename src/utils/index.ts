@@ -1,5 +1,3 @@
-import { Game } from '../components/pages/Home'
-
 export const parseToBrl = (amount = 0) => {
   return new Intl.NumberFormat('pt-BR', {
     style: 'currency',

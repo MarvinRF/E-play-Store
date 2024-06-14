@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Game } from '../../components/pages/Home'
 
 type CartState = {
   items: Game[]

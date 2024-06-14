@@ -4,7 +4,6 @@ import { parseToBrl } from '../../utils'
 
 import * as S from './styles'
 
-import { Game } from '../pages/Home'
 import Loader from '../Loader'
 
 export type Props = {
